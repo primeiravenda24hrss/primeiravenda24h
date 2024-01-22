@@ -1,0 +1,922 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",(e=>{this.persisted=e.persisted})),window.addEventListener("DOMContentLoaded",(()=>{this._preconnect3rdParties()})),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){document.hidden?e._triggerListener():(this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventHandler,{passive:!0}))),window.addEventListener("touchstart",e.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",e.touchStartHandler),document.addEventListener("visibilitychange",e.userEventHandler))}_removeUserInteractionListener(){this.triggerEvents.forEach((e=>window.removeEventListener(e,this.userEventHandler,{passive:!0}))),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(e){"HTML"!==e.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),e.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"onclick","rocket-onclick"))}_onTouchMove(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick")}_onTouchEnd(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(e){e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick"),this.interceptedClicks.push(e),e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach((e=>{e.target.dispatchEvent(new MouseEvent("click",{view:e.view,bubbles:!0,cancelable:!0}))}))}_renameDOMAttribute(e,t,n){e.hasAttribute&&e.hasAttribute(t)&&(event.target.setAttribute(n,event.target.getAttribute(t)),event.target.removeAttribute(t))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let e=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((t=>{if(t.hasAttribute("src")){const n=new URL(t.src).origin;n!==location.origin&&e.push({src:n,crossOrigin:t.crossOrigin||"module"===t.getAttribute("data-rocket-type")})}})),e=[...new Map(e.map((e=>[JSON.stringify(e),e]))).values()],this._batchInjectResourceHints(e,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(e){}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._replayClicks()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._littleBreath(),new Promise((t=>{const n=document.createElement("script");[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type"),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t());try{e.parentNode.replaceChild(n,e)}catch(e){t()}}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(e,t){var n=document.createDocumentFragment();e.forEach((e=>{if(e.src){const i=document.createElement("link");i.href=e.src,i.rel=t,"preconnect"!==t&&(i.as="script"),e.getAttribute&&"module"===e.getAttribute("data-rocket-type")&&(i.crossOrigin=!0),e.crossOrigin&&(i.crossOrigin=e.crossOrigin),n.appendChild(i)}})),document.head.appendChild(n)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(i){e["rocket"+t]=n=i}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),await this._littleBreath();const e=new Event("rocket-pageshow");e.persisted=this.persisted,window.dispatchEvent(e),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const s=document.createDocumentFragment();i.setStart(s,0),s.appendChild(i.createContextualFragment(t)),r.insertBefore(s,o)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise((e=>setTimeout(e))):new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts;e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+	
+		<title>Primeira venda em 24 horas</title>
+<meta name='robots' content='max-image-preview:large' />
+<script type="rocketlazyloadscript" data-rocket-type='application/javascript'>console.log('PixelYourSite Free version 9.2.2');</script>
+<link rel="alternate" type="application/rss+xml" title="Primeira venda em 24 horas &raquo; Feed" href="https://primeiravenda24hrss.com.br/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Primeira venda em 24 horas &raquo; Comments Feed" href="https://primeiravenda24hrss.com.br/comments/feed/" />
+<script type="rocketlazyloadscript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/primeiravenda24hrss.com.br\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.1.4"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(p&&p.fillText)switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style>
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='https://primeiravenda24hrss.com.br/wp-includes/css/dist/block-library/style.min.css?ver=6.1.4' media='all' />
+<link rel='stylesheet' id='classic-theme-styles-css' href='https://primeiravenda24hrss.com.br/wp-includes/css/classic-themes.min.css?ver=1' media='all' />
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='hello-elementor-css' href='https://primeiravenda24hrss.com.br/wp-content/themes/hello-elementor/style.min.css?ver=2.6.1' media='all' />
+<link rel='stylesheet' id='hello-elementor-theme-style-css' href='https://primeiravenda24hrss.com.br/wp-content/themes/hello-elementor/theme.min.css?ver=2.6.1' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css' href='https://primeiravenda24hrss.com.br/wp-content/plugins/elementor/assets/css/frontend-lite.min.css?ver=3.9.2' media='all' />
+<link rel='stylesheet' id='elementor-post-5-css' href='https://primeiravenda24hrss.com.br/wp-content/uploads/elementor/css/post-5.css?ver=1703177160' media='all' />
+<link data-minify="1" rel='stylesheet' id='elementor-icons-css' href='https://primeiravenda24hrss.com.br/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=1703177164' media='all' />
+<link rel='stylesheet' id='elementor-pro-css' href='https://primeiravenda24hrss.com.br/wp-content/plugins/pro-elements/assets/css/frontend-lite.min.css?ver=3.8.0' media='all' />
+<link data-minify="1" rel='stylesheet' id='font-awesome-5-all-css' href='https://primeiravenda24hrss.com.br/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css?ver=1703177164' media='all' />
+<link rel='stylesheet' id='font-awesome-4-shim-css' href='https://primeiravenda24hrss.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min.css?ver=3.9.2' media='all' />
+<link rel='stylesheet' id='elementor-global-css' href='https://primeiravenda24hrss.com.br/wp-content/uploads/elementor/css/global.css?ver=1703177162' media='all' />
+<link rel='stylesheet' id='elementor-post-34-css' href='https://primeiravenda24hrss.com.br/wp-content/uploads/elementor/css/post-34.css?ver=1705676236' media='all' />
+<style id='rocket-lazyload-inline-css'>
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(https://primeiravenda24hrss.com.br/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}
+</style>
+<link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CMontserrat%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap&#038;ver=6.1.4' media='all' />
+<link rel='stylesheet' id='elementor-icons-shared-0-css' href='https://primeiravenda24hrss.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css?ver=5.15.3' media='all' />
+<link data-minify="1" rel='stylesheet' id='elementor-icons-fa-solid-css' href='https://primeiravenda24hrss.com.br/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css?ver=1703177164' media='all' />
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-includes/js/jquery/jquery.min.js?ver=3.6.1' id='jquery-core-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-content/plugins/pixelyoursite/dist/scripts/jquery.bind-first-0.2.3.min.js?ver=6.1.4' id='jquery-bind-first-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-content/plugins/pixelyoursite/dist/scripts/js.cookie-2.1.3.min.js?ver=2.1.3' id='js-cookie-js'></script>
+<script id='pys-js-extra'>
+var pysOptions = {"staticEvents":{"facebook":{"init_event":[{"delay":0,"type":"static","name":"PageView","pixelIds":["758135006008887"],"eventID":"a0fb3434-721e-4b8d-9736-1816a6c8f6ab","params":{"page_title":"lp","post_type":"page","post_id":34,"plugin":"PixelYourSite","user_role":"guest","event_url":"primeiravenda24hrss.com.br\/"},"e_id":"init_event","ids":[],"hasTimeWindow":false,"timeWindow":0,"woo_order":"","edd_order":""}]}},"dynamicEvents":[],"triggerEvents":[],"triggerEventTypes":[],"facebook":{"pixelIds":["758135006008887"],"advancedMatching":[],"removeMetadata":false,"contentParams":{"post_type":"page","post_id":34,"content_name":"lp"},"commentEventEnabled":true,"wooVariableAsSimple":false,"downloadEnabled":true,"formEventEnabled":true,"ajaxForServerEvent":true,"serverApiEnabled":true,"wooCRSendFromServer":false},"debug":"","siteUrl":"https:\/\/primeiravenda24hrss.com.br","ajaxUrl":"https:\/\/primeiravenda24hrss.com.br\/wp-admin\/admin-ajax.php","enable_remove_download_url_param":"1","cookie_duration":"7","last_visit_duration":"60","gdpr":{"ajax_enabled":false,"all_disabled_by_api":false,"facebook_disabled_by_api":false,"analytics_disabled_by_api":false,"google_ads_disabled_by_api":false,"pinterest_disabled_by_api":false,"bing_disabled_by_api":false,"facebook_prior_consent_enabled":true,"analytics_prior_consent_enabled":true,"google_ads_prior_consent_enabled":null,"pinterest_prior_consent_enabled":true,"bing_prior_consent_enabled":true,"cookiebot_integration_enabled":false,"cookiebot_facebook_consent_category":"marketing","cookiebot_analytics_consent_category":"statistics","cookiebot_google_ads_consent_category":null,"cookiebot_pinterest_consent_category":"marketing","cookiebot_bing_consent_category":"marketing","consent_magic_integration_enabled":false,"real_cookie_banner_integration_enabled":false,"cookie_notice_integration_enabled":false,"cookie_law_info_integration_enabled":false},"woo":{"enabled":false},"edd":{"enabled":false}};
+</script>
+<script type="rocketlazyloadscript" data-minify="1" src='https://primeiravenda24hrss.com.br/wp-content/cache/min/1/wp-content/plugins/pixelyoursite/dist/scripts/public.js?ver=1679459439' id='pys-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js?ver=3.9.2' id='font-awesome-4-shim-js'></script>
+<link rel="https://api.w.org/" href="https://primeiravenda24hrss.com.br/wp-json/" /><link rel="alternate" type="application/json" href="https://primeiravenda24hrss.com.br/wp-json/wp/v2/pages/34" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://primeiravenda24hrss.com.br/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://primeiravenda24hrss.com.br/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 6.1.4" />
+<link rel="canonical" href="https://primeiravenda24hrss.com.br/" />
+<link rel='shortlink' href='https://primeiravenda24hrss.com.br/' />
+<link rel="alternate" type="application/json+oembed" href="https://primeiravenda24hrss.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fprimeiravenda24hrss.com.br%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://primeiravenda24hrss.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fprimeiravenda24hrss.com.br%2F&#038;format=xml" />
+<meta name="cdp-version" content="1.4.4" /><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" /></head>
+<body class="home page-template page-template-elementor_canvas page page-id-34 elementor-default elementor-template-canvas elementor-kit-5 elementor-page elementor-page-34">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>		<div data-elementor-type="wp-page" data-elementor-id="34" class="elementor elementor-34">
+									<section class="elementor-section elementor-top-section elementor-element elementor-element-3ede2f31 elementor-hidden-desktop elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="3ede2f31" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-70478d9f" data-id="70478d9f" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-7cb11b35 elementor-widget elementor-widget-image" data-id="7cb11b35" data-element_type="widget" data-settings="{&quot;_animation_mobile&quot;:&quot;zoomIn&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.9.2 - 21-12-2022 */
+.elementor-widget-image{text-align:center}.elementor-widget-image a{display:inline-block}.elementor-widget-image a img[src$=".svg"]{width:48px}.elementor-widget-image img{vertical-align:middle;display:inline-block}</style>												<img decoding="async" width="800" height="323" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20323'%3E%3C/svg%3E" class="attachment-large size-large wp-image-275" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-1024x414.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-300x121.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-768x311.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140.png.webp 1480w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-1024x414.png.webp" /><noscript><img decoding="async" width="800" height="323" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-1024x414.png.webp" class="attachment-large size-large wp-image-275" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-1024x414.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-300x121.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-768x311.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140.png.webp 1480w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-6d180699 elementor-widget elementor-widget-heading" data-id="6d180699" data-element_type="widget" data-settings="{&quot;_animation_mobile&quot;:&quot;fadeIn&quot;}" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.9.2 - 21-12-2022 */
+.elementor-heading-title{padding:0;margin:0;line-height:1}.elementor-widget-heading .elementor-heading-title[class*=elementor-size-]>a{color:inherit;font-size:inherit;line-height:inherit}.elementor-widget-heading .elementor-heading-title.elementor-size-small{font-size:15px}.elementor-widget-heading .elementor-heading-title.elementor-size-medium{font-size:19px}.elementor-widget-heading .elementor-heading-title.elementor-size-large{font-size:29px}.elementor-widget-heading .elementor-heading-title.elementor-size-xl{font-size:39px}.elementor-widget-heading .elementor-heading-title.elementor-size-xxl{font-size:59px}</style><h2 class="elementor-heading-title elementor-size-default"><b>SE VOCÊ NAO FIZER SUA <u>PRIMEIRA VENDA EM 24 HORAS,</u> <b><font color="dfad6b">DEVOLVO SEU DINHEIRO</font></b> E AINDA <b>TE DOU R$20 REAIS NO PIX</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-4247cd91 elementor-widget elementor-widget-heading" data-id="4247cd91" data-element_type="widget" data-settings="{&quot;_animation_mobile&quot;:&quot;fadeIn&quot;}" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">PRIMEIRO MILHÃO AO 18 ANOS, E <B>MAIS DE 300 MIL ALUNOS PELO MUNDO</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-120ddd6d elementor-widget elementor-widget-html" data-id="120ddd6d" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<iframe loading="lazy" id="panda-e295ae18-1f6f-479e-ae50-4d6a64d7d62f" src="about:blank" style="border:none;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture" allowfullscreen=true width="720" height="180" fetchpriority="high" data-rocket-lazyload="fitvidscompatible" data-lazy-src="https://player-vz-d50112e0-973.tv.pandavideo.com.br/embed/?v=e295ae18-1f6f-479e-ae50-4d6a64d7d62f"></iframe><noscript><iframe id="panda-e295ae18-1f6f-479e-ae50-4d6a64d7d62f" src="https://player-vz-d50112e0-973.tv.pandavideo.com.br/embed/?v=e295ae18-1f6f-479e-ae50-4d6a64d7d62f" style="border:none;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture" allowfullscreen=true width="720" height="180" fetchpriority="high"></iframe></noscript>		</div>
+				</div>
+				<div class="elementor-element elementor-element-6a5d1a3 elementor-align-center elementor-widget elementor-widget-button" data-id="6a5d1a3" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a href="#compra" class="elementor-button-link elementor-button elementor-size-sm" role="button" id="bt_pulse">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">COMECE AGORA</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-4dc66c3c elementor-hidden-tablet elementor-hidden-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="4dc66c3c" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-53fc0399" data-id="53fc0399" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-38b1cf43 elementor-widget elementor-widget-image" data-id="38b1cf43" data-element_type="widget" data-settings="{&quot;_animation_mobile&quot;:&quot;zoomIn&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="1480" height="599" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201480%20599'%3E%3C/svg%3E" class="attachment-full size-full wp-image-275" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140.png.webp 1480w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-300x121.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-1024x414.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-768x311.png.webp 768w" data-lazy-sizes="(max-width: 1480px) 100vw, 1480px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140.png.webp" /><noscript><img decoding="async" width="1480" height="599" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140.png.webp" class="attachment-full size-full wp-image-275" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140.png.webp 1480w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-300x121.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-1024x414.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-768x311.png.webp 768w" sizes="(max-width: 1480px) 100vw, 1480px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-74b8bca2 elementor-widget elementor-widget-heading" data-id="74b8bca2" data-element_type="widget" data-settings="{&quot;_animation_mobile&quot;:&quot;fadeIn&quot;}" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default"><b>SE VOCÊ NAO FIZER SUA <u>PRIMEIRA VENDA EM 24 HORAS,</u> <b><font color="dfad6b">DEVOLVO SEU DINHEIRO</font></b> E AINDA <b>TE DOU R$20 REAIS NO PIX</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-4cbca58e elementor-widget elementor-widget-heading" data-id="4cbca58e" data-element_type="widget" data-settings="{&quot;_animation_mobile&quot;:&quot;fadeIn&quot;}" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">PRIMEIRO MILHÃO AO 18 ANOS, E <B>MAIS DE 300 MIL ALUNOS PELO MUNDO</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-4d3c0f70 elementor-widget elementor-widget-html" data-id="4d3c0f70" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<div style="position:relative;padding-top:56.25%;"><iframe loading="lazy" id="panda-fa668262-d988-42ba-ac3c-77bb5de33c37" src="about:blank" style="border:none;position:absolute;top:0;left:0;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture" allowfullscreen=true width="100%" height="100%" fetchpriority="high" data-rocket-lazyload="fitvidscompatible" data-lazy-src="https://player-vz-d50112e0-973.tv.pandavideo.com.br/embed/?v=fa668262-d988-42ba-ac3c-77bb5de33c37"></iframe><noscript><iframe id="panda-fa668262-d988-42ba-ac3c-77bb5de33c37" src="https://player-vz-d50112e0-973.tv.pandavideo.com.br/embed/?v=fa668262-d988-42ba-ac3c-77bb5de33c37" style="border:none;position:absolute;top:0;left:0;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture" allowfullscreen=true width="100%" height="100%" fetchpriority="high"></iframe></noscript></div>		</div>
+				</div>
+				<div class="elementor-element elementor-element-5819e788 elementor-align-center elementor-widget elementor-widget-button" data-id="5819e788" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a href="#compra" class="elementor-button-link elementor-button elementor-size-sm" role="button" id="bt_pulse">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">COMECE AGORA</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-7339c0cf elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7339c0cf" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-74901d7e" data-id="74901d7e" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-58a32f12 elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-heading" data-id="58a32f12" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Aqui está tudo o que você</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-79ec06b7 elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-heading" data-id="79ec06b7" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">vai receber no <b><font color="DFAD6B">P24</font></b></h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-4bd87ce6 elementor-hidden-desktop elementor-widget elementor-widget-heading" data-id="4bd87ce6" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Aqui está tudo o que você vai receber no <b><font color="DFAD6B">P24</font></b></h2>		</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-793aaa10 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="793aaa10" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-46ef5eaa elementor-invisible" data-id="46ef5eaa" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInLeft&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-7e09907b elementor-widget elementor-widget-image" data-id="7e09907b" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="800" height="450" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20450'%3E%3C/svg%3E" class="attachment-large size-large wp-image-310" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1-1024x576.jpg.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1-300x169.jpg.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1-768x432.jpg.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1-1536x864.jpg.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1.jpg.webp 1920w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1-1024x576.jpg.webp" /><noscript><img decoding="async" width="800" height="450" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1-1024x576.jpg.webp" class="attachment-large size-large wp-image-310" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1-1024x576.jpg.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1-300x169.jpg.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1-768x432.jpg.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1-1536x864.jpg.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1.jpg.webp 1920w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-2941a2d6 elementor-widget elementor-widget-heading" data-id="2941a2d6" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">SAINDO DO ZERO</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-7718c2fc elementor-widget elementor-widget-heading" data-id="7718c2fc" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Aqui você irá ficar por dentro de tudo o que você precisa fazer para sair do absoluto zero.</h2>		</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-2b19086 elementor-invisible" data-id="2b19086" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInRight&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-76f6a3bf elementor-widget elementor-widget-image" data-id="76f6a3bf" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="800" height="450" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20450'%3E%3C/svg%3E" class="attachment-large size-large wp-image-311" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2-1024x576.jpg.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2-300x169.jpg.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2-768x432.jpg.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2-1536x864.jpg.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2.jpg.webp 1920w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2-1024x576.jpg.webp" /><noscript><img decoding="async" width="800" height="450" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2-1024x576.jpg.webp" class="attachment-large size-large wp-image-311" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2-1024x576.jpg.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2-300x169.jpg.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2-768x432.jpg.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2-1536x864.jpg.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2.jpg.webp 1920w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-4904583b elementor-widget elementor-widget-heading" data-id="4904583b" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">ENTENDA O MERCADO</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-7f64b19d elementor-widget elementor-widget-heading" data-id="7f64b19d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">entenda como funciona o mercado digital e como você vai poder fazer suas vendas.</h2>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-7ceafae3 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7ceafae3" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-79c7b31c elementor-invisible" data-id="79c7b31c" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInLeft&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-455dcf2d elementor-widget elementor-widget-image" data-id="455dcf2d" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="800" height="450" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20450'%3E%3C/svg%3E" class="attachment-large size-large wp-image-312" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3-1024x576.jpg.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3-300x169.jpg.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3-768x432.jpg.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3-1536x864.jpg.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3.jpg.webp 1920w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3-1024x576.jpg.webp" /><noscript><img decoding="async" width="800" height="450" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3-1024x576.jpg.webp" class="attachment-large size-large wp-image-312" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3-1024x576.jpg.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3-300x169.jpg.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3-768x432.jpg.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3-1536x864.jpg.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3.jpg.webp 1920w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-7b70547a elementor-widget elementor-widget-heading" data-id="7b70547a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">PRIMEIRA VENDA EM 30 DIAS</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-214c4599 elementor-widget elementor-widget-heading" data-id="214c4599" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Nesse módulo você vai aprender a fazer sua primeira venda em 30 dias, sem precisar aparecer!
+</h2>		</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-78035f76 elementor-invisible" data-id="78035f76" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInRight&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-9ac6d50 elementor-widget elementor-widget-image" data-id="9ac6d50" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="800" height="450" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20450'%3E%3C/svg%3E" class="attachment-large size-large wp-image-313" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4-1024x576.jpg.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4-300x169.jpg.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4-768x432.jpg.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4-1536x864.jpg.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4.jpg.webp 1920w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4-1024x576.jpg.webp" /><noscript><img decoding="async" width="800" height="450" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4-1024x576.jpg.webp" class="attachment-large size-large wp-image-313" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4-1024x576.jpg.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4-300x169.jpg.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4-768x432.jpg.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4-1536x864.jpg.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4.jpg.webp 1920w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-3f0d89e elementor-widget elementor-widget-heading" data-id="3f0d89e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">PRIMEIRA VENDA RÁPIDA</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-3bbe55bc elementor-widget elementor-widget-heading" data-id="3bbe55bc" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Nesse módulo você vai aprender todas as estratégias para fazer a sua primeira venda rápida!
+</h2>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-50049cfd elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="50049cfd" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-767714fb elementor-invisible" data-id="767714fb" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInLeft&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-20259205 elementor-widget elementor-widget-image" data-id="20259205" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="800" height="450" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20450'%3E%3C/svg%3E" class="attachment-large size-large wp-image-314" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6-1024x576.jpg.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6-300x169.jpg.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6-768x432.jpg.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6-1536x864.jpg.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6.jpg.webp 1920w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6-1024x576.jpg.webp" /><noscript><img decoding="async" width="800" height="450" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6-1024x576.jpg.webp" class="attachment-large size-large wp-image-314" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6-1024x576.jpg.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6-300x169.jpg.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6-768x432.jpg.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6-1536x864.jpg.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6.jpg.webp 1920w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-4d7eebac elementor-widget elementor-widget-heading" data-id="4d7eebac" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">PRIMEIRA VENDA EM 24 HORAS
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-69ffb3a9 elementor-widget elementor-widget-heading" data-id="69ffb3a9" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">E agora você vai aprender tudo o que precisa saber, para fazer a sua primeira venda em menos de 24 horas. (Essas estratégias podem ser usadas até para começar a viver de internet.)</h2>		</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-13c8f6f9 elementor-invisible" data-id="13c8f6f9" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInRight&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-4a58bbb9 elementor-widget elementor-widget-image" data-id="4a58bbb9" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="800" height="450" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20450'%3E%3C/svg%3E" class="attachment-large size-large wp-image-315" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5-1024x576.jpg.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5-300x169.jpg.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5-768x432.jpg.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5-1536x864.jpg.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5.jpg.webp 1920w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5-1024x576.jpg.webp" /><noscript><img decoding="async" width="800" height="450" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5-1024x576.jpg.webp" class="attachment-large size-large wp-image-315" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5-1024x576.jpg.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5-300x169.jpg.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5-768x432.jpg.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5-1536x864.jpg.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5.jpg.webp 1920w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-2b7fe130 elementor-widget elementor-widget-heading" data-id="2b7fe130" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">CURSO COMPLETO DE TRÁFEGO PAGO (BÔNUS)</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-3f0ab05e elementor-widget elementor-widget-heading" data-id="3f0ab05e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Você vai aprender tráfego pago na prática aqui nesse módulo, mesmo que você não saiba nada.</h2>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-39a65348 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="39a65348" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-234043d elementor-invisible" data-id="234043d" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInLeft&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-7fc63952 elementor-widget elementor-widget-image" data-id="7fc63952" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="512" height="512" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3C/svg%3E" class="attachment-large size-large wp-image-316" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/telegram.png.webp 512w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/telegram-300x300.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/telegram-150x150.png.webp 150w" data-lazy-sizes="(max-width: 512px) 100vw, 512px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/telegram.png.webp" /><noscript><img decoding="async" width="512" height="512" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/telegram.png.webp" class="attachment-large size-large wp-image-316" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/telegram.png.webp 512w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/telegram-300x300.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/telegram-150x150.png.webp 150w" sizes="(max-width: 512px) 100vw, 512px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-b077124 elementor-widget elementor-widget-heading" data-id="b077124" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">SUPORTE NO TELEGRAM</h2>		</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-36492cba elementor-invisible" data-id="36492cba" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInLeft&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-d65c5c5 elementor-widget elementor-widget-image" data-id="d65c5c5" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="512" height="512" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3C/svg%3E" class="attachment-large size-large wp-image-317" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/instagram.png.webp 512w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/instagram-300x300.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/instagram-150x150.png.webp 150w" data-lazy-sizes="(max-width: 512px) 100vw, 512px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/instagram.png.webp" /><noscript><img decoding="async" width="512" height="512" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/instagram.png.webp" class="attachment-large size-large wp-image-317" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/instagram.png.webp 512w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/instagram-300x300.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/instagram-150x150.png.webp 150w" sizes="(max-width: 512px) 100vw, 512px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-1d81cc02 elementor-widget elementor-widget-heading" data-id="1d81cc02" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">SUPORTE NO INSTAGRAM</h2>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<div class="elementor-element elementor-element-c162ce6 elementor-align-center elementor-widget elementor-widget-button" data-id="c162ce6" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a href="#compra" class="elementor-button-link elementor-button elementor-size-sm" role="button" id="bt_pulse">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">COMECE AGORA</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-343e40a5 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="343e40a5" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-54febfd5" data-id="54febfd5" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-1d116a70 elementor-widget elementor-widget-image" data-id="1d116a70" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="512" height="512" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3C/svg%3E" class="attachment-large size-large wp-image-277" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao.png.webp 512w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao-300x300.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao-150x150.png.webp 150w" data-lazy-sizes="(max-width: 512px) 100vw, 512px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao.png.webp" /><noscript><img decoding="async" width="512" height="512" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao.png.webp" class="attachment-large size-large wp-image-277" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao.png.webp 512w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao-300x300.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao-150x150.png.webp 150w" sizes="(max-width: 512px) 100vw, 512px" /></noscript>															</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-53d7a359" data-id="53d7a359" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-50b5afbf elementor-invisible elementor-widget elementor-widget-heading" data-id="50b5afbf" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;bounceIn&quot;}" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">LEIA PARA POUPAR SEU <B>TEMPO.</B></h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-32084bca elementor-invisible elementor-widget elementor-widget-heading" data-id="32084bca" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default"><B>Você vai aprender com uma pessoa que já trilhou o caminho</B> das pedras e passou pelo processo difícil do início de qualquer jornada. <B>Nesse processo descobriu o que funciona e o que não funciona,</B> para ensinar de uma forma que vai e poupar tempo e dinheiro.</h2>		</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-58939380" data-id="58939380" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-1c8106a0 elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-image" data-id="1c8106a0" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="512" height="512" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3C/svg%3E" class="attachment-large size-large wp-image-277" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao.png.webp 512w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao-300x300.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao-150x150.png.webp 150w" data-lazy-sizes="(max-width: 512px) 100vw, 512px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao.png.webp" /><noscript><img decoding="async" width="512" height="512" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao.png.webp" class="attachment-large size-large wp-image-277" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao.png.webp 512w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao-300x300.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/atencao-150x150.png.webp 150w" sizes="(max-width: 512px) 100vw, 512px" /></noscript>															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-25d3efae elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="25d3efae" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;shape_divider_top&quot;:&quot;triangle&quot;,&quot;shape_divider_bottom&quot;:&quot;tilt&quot;}">
+					<div class="elementor-shape elementor-shape-top" data-negative="false">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+	<path class="elementor-shape-fill" d="M500,98.9L0,6.1V0h1000v6.1L500,98.9z"/>
+</svg>		</div>
+				<div class="elementor-shape elementor-shape-bottom" data-negative="false">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+	<path class="elementor-shape-fill" d="M0,6V0h1000v100L0,6z"/>
+</svg>		</div>
+					<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-37ac3052" data-id="37ac3052" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-5b41c40c elementor-invisible elementor-widget elementor-widget-image" data-id="5b41c40c" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="800" height="831" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20831'%3E%3C/svg%3E" class="attachment-large size-large wp-image-278" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT-CM-986x1024.png.webp 986w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT-CM-289x300.png.webp 289w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT-CM-768x797.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT-CM.png.webp 996w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT-CM-986x1024.png.webp" /><noscript><img decoding="async" width="800" height="831" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT-CM-986x1024.png.webp" class="attachment-large size-large wp-image-278" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT-CM-986x1024.png.webp 986w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT-CM-289x300.png.webp 289w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT-CM-768x797.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT-CM.png.webp 996w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-231f22f3 elementor-invisible" data-id="231f22f3" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-6c0599de elementor-widget elementor-widget-heading" data-id="6c0599de" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Prazer Caio M.
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-5a5500a7 elementor-widget elementor-widget-heading" data-id="5a5500a7" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Especialista no mercado digital, iniciei como afiliado através de grupos pelo Facebook.</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-53a14034 elementor-widget elementor-widget-heading" data-id="53a14034" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Atualmente já trabalho com marketing há 3 anos e graças a ele, pude morar sozinho com apenas 17 anos!</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-7abcdbd5 elementor-widget elementor-widget-heading" data-id="7abcdbd5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Hoje em dia, já faturo mais de R$150.000,00 por mês com vendas pela internet e ajudo meus seguidores a começarem a faturar com vendas sem sair de casa!</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-6cd18c2d elementor-widget elementor-widget-heading" data-id="6cd18c2d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Com mais de 300 mil inscritos no YouTube, atualmente me dedico a ajudar todos os que desejam sair da CLT para começar a ganhar a vida com a internet.</h2>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-5a4cd88f elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="5a4cd88f" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;motion_fx_motion_fx_scrolling&quot;:&quot;yes&quot;,&quot;shape_divider_bottom&quot;:&quot;tilt&quot;,&quot;motion_fx_devices&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;]}">
+							<div class="elementor-background-overlay"></div>
+						<div class="elementor-shape elementor-shape-bottom" data-negative="false">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+	<path class="elementor-shape-fill" d="M0,6V0h1000v100L0,6z"/>
+</svg>		</div>
+					<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-636c0564" data-id="636c0564" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<section class="elementor-section elementor-inner-section elementor-element elementor-element-7fe5731b elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7fe5731b" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-369aa600" data-id="369aa600" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-3908d7e0 elementor-widget elementor-widget-image" data-id="3908d7e0" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="843" height="835" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20843%20835'%3E%3C/svg%3E" class="attachment-full size-full wp-image-280" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/ICON-2.png.webp 843w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/ICON-2-300x297.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/ICON-2-150x150.png.webp 150w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/ICON-2-768x761.png.webp 768w" data-lazy-sizes="(max-width: 843px) 100vw, 843px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/ICON-2.png.webp" /><noscript><img decoding="async" width="843" height="835" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/ICON-2.png.webp" class="attachment-full size-full wp-image-280" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/ICON-2.png.webp 843w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/ICON-2-300x297.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/ICON-2-150x150.png.webp 150w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/ICON-2-768x761.png.webp 768w" sizes="(max-width: 843px) 100vw, 843px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-72417a5b elementor-invisible elementor-widget elementor-widget-heading" data-id="72417a5b" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Autoridade Reconhecida</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-7f2eee07 elementor-invisible elementor-widget elementor-widget-heading" data-id="7f2eee07" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">O que diz alguns dos principais portais de notícias do Brasil sobre o crescimento de Caio Martins no Marketing Digital.</h2>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-74171f95 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="74171f95" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-2d201022" data-id="2d201022" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-2159e30b elementor-widget elementor-widget-image" data-id="2159e30b" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+																<a href="https://lorena.r7.com/post/Youtuber-brasileiro-ostenta-ganhos-em-Balneario-Camboriu">
+							<img decoding="async" width="800" height="795" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20795'%3E%3C/svg%3E" class="elementor-animation-grow attachment-large size-large wp-image-281" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT1-1-1024x1018.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT1-1-300x298.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT1-1-150x150.png.webp 150w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT1-1-768x764.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT1-1.png.webp 1251w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT1-1-1024x1018.png.webp" /><noscript><img decoding="async" width="800" height="795" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT1-1-1024x1018.png.webp" class="elementor-animation-grow attachment-large size-large wp-image-281" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT1-1-1024x1018.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT1-1-300x298.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT1-1-150x150.png.webp 150w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT1-1-768x764.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT1-1.png.webp 1251w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>								</a>
+															</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-4be943ef" data-id="4be943ef" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-444d3aa8 elementor-widget elementor-widget-image" data-id="444d3aa8" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+																<a href="https://www.folhavitoria.com.br/entretenimento/noticia/09/2022/r-100-mil-por-mes-youtuber-jovem-ostenta-vida-de-luxo-pelo-brasil-e-choca">
+							<img decoding="async" width="800" height="795" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20795'%3E%3C/svg%3E" class="elementor-animation-grow attachment-large size-large wp-image-282" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT3-1024x1018.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT3-300x298.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT3-150x150.png.webp 150w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT3-768x764.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT3.png.webp 1251w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT3-1024x1018.png.webp" /><noscript><img decoding="async" width="800" height="795" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT3-1024x1018.png.webp" class="elementor-animation-grow attachment-large size-large wp-image-282" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT3-1024x1018.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT3-300x298.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT3-150x150.png.webp 150w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT3-768x764.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT3.png.webp 1251w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>								</a>
+															</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-5837d2e4" data-id="5837d2e4" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-12ae316c elementor-widget elementor-widget-image" data-id="12ae316c" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+																<a href="https://extra.globo.com/noticias/aos-18-anos-youtuber-caio-martins-comprou-seu-primeiro-apartamento-trabalhando-com-internet-25577915.html">
+							<img decoding="async" width="800" height="795" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20795'%3E%3C/svg%3E" class="elementor-animation-grow attachment-large size-large wp-image-283" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT2.png.webp 1001w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT2-300x298.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT2-150x150.png.webp 150w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT2-768x763.png.webp 768w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT2.png.webp" /><noscript><img decoding="async" width="800" height="795" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT2.png.webp" class="elementor-animation-grow attachment-large size-large wp-image-283" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT2.png.webp 1001w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT2-300x298.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT2-150x150.png.webp 150w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/FT2-768x763.png.webp 768w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>								</a>
+															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-d6a0112 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="d6a0112" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-2987a0a7" data-id="2987a0a7" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-7c66e791 elementor-invisible elementor-widget elementor-widget-image" data-id="7c66e791" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;bounceIn&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="134" height="93" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20134%2093'%3E%3C/svg%3E" class="attachment-large size-large wp-image-50" alt="" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-6-1-1.png.webp" /><noscript><img decoding="async" width="134" height="93" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-6-1-1.png.webp" class="attachment-large size-large wp-image-50" alt="" /></noscript>															</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-6fb99c39" data-id="6fb99c39" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-103f14e1 elementor-invisible elementor-widget elementor-widget-counter" data-id="103f14e1" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="counter.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.9.2 - 21-12-2022 */
+.elementor-counter .elementor-counter-number-wrapper{display:flex;font-size:69px;font-weight:600;line-height:1}.elementor-counter .elementor-counter-number-prefix,.elementor-counter .elementor-counter-number-suffix{flex-grow:1;white-space:pre-wrap}.elementor-counter .elementor-counter-number-prefix{text-align:right}.elementor-counter .elementor-counter-number-suffix{text-align:left}.elementor-counter .elementor-counter-title{text-align:center;font-size:19px;font-weight:400;line-height:2.5}</style>		<div class="elementor-counter">
+			<div class="elementor-counter-number-wrapper">
+				<span class="elementor-counter-number-prefix">+</span>
+				<span class="elementor-counter-number" data-duration="2000" data-to-value="374" data-from-value="0" data-delimiter=",">0</span>
+				<span class="elementor-counter-number-suffix"> MIL</span>
+			</div>
+							<div class="elementor-counter-title">INSCRITOS NO YOUTUBE!</div>
+					</div>
+				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-3c045c2c" data-id="3c045c2c" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-1f4c6248 elementor-hidden-tablet elementor-hidden-mobile elementor-invisible elementor-widget elementor-widget-image" data-id="1f4c6248" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;bounceIn&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="134" height="93" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20134%2093'%3E%3C/svg%3E" class="attachment-large size-large wp-image-50" alt="" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-6-1-1.png.webp" /><noscript><img decoding="async" width="134" height="93" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-6-1-1.png.webp" class="attachment-large size-large wp-image-50" alt="" /></noscript>															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-194b1ff3 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="194b1ff3" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;shape_divider_top&quot;:&quot;tilt&quot;,&quot;shape_divider_bottom&quot;:&quot;tilt&quot;}">
+					<div class="elementor-shape elementor-shape-top" data-negative="false">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+	<path class="elementor-shape-fill" d="M0,6V0h1000v100L0,6z"/>
+</svg>		</div>
+				<div class="elementor-shape elementor-shape-bottom" data-negative="false">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+	<path class="elementor-shape-fill" d="M0,6V0h1000v100L0,6z"/>
+</svg>		</div>
+					<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6c11d96e elementor-invisible" data-id="6c11d96e" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-387b0b95 elementor-invisible elementor-widget elementor-widget-heading" data-id="387b0b95" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">TUDO FEITO PARA <b><font color="dfad6b">VOCÊ!
+</font></b></h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-52d2e78a elementor-widget elementor-widget-heading" data-id="52d2e78a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Especialista no mercado digital, iniciei como afiliado através de grupos pelo Facebook.
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-3d49d488 elementor-widget elementor-widget-heading" data-id="3d49d488" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Atualmente já trabalho com marketing há 3 anos e graças a ele, pude morar sozinho com apenas 17 anos!
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-269df56 elementor-widget elementor-widget-heading" data-id="269df56" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Hoje em dia, já faturo mais de R$150.000,00 por mês com vendas pela internet e ajudo meus seguidores a começarem a faturar com vendas sem sair de casa!</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-46caa2dc elementor-widget elementor-widget-heading" data-id="46caa2dc" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Com mais de 300 mil inscritos no YouTube, atualmente me dedico a ajudar todos os que desejam sair da CLT para começar a ganhar a vida com a internet.
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-7047cbcd elementor-widget elementor-widget-heading" data-id="7047cbcd" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">*RESULTADOS DOS NOSSOS ALUNOS*</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-6584d499 elementor-arrows-position-outside elementor-widget elementor-widget-image-carousel" data-id="6584d499" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;3&quot;,&quot;navigation&quot;:&quot;arrows&quot;,&quot;image_spacing_custom&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:7,&quot;sizes&quot;:[]},&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500}" data-widget_type="image-carousel.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.9.2 - 21-12-2022 */
+.elementor-widget-image-carousel .swiper-container{position:static}.elementor-widget-image-carousel .swiper-container .swiper-slide figure{line-height:inherit}.elementor-widget-image-carousel .swiper-slide{text-align:center}.elementor-image-carousel-wrapper:not(.swiper-container-initialized) .swiper-slide{max-width:calc(100% / var(--e-image-carousel-slides-to-show, 3))}</style>		<div class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
+			<div class="elementor-image-carousel swiper-wrapper">
+								<div class="swiper-slide"><figure class="swiper-slide-inner"><img width="738" height="1600" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20738%201600'%3E%3C/svg%3E" alt="8000f471-c990-4331-8941-6e744a414b01" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/8000f471-c990-4331-8941-6e744a414b01.jpg.webp" /><noscript><img width="738" height="1600" decoding="async" class="swiper-slide-image" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/8000f471-c990-4331-8941-6e744a414b01.jpg.webp" alt="8000f471-c990-4331-8941-6e744a414b01" /></noscript></figure></div><div class="swiper-slide"><figure class="swiper-slide-inner"><img width="617" height="1280" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20617%201280'%3E%3C/svg%3E" alt="22693901-a518-4f10-989b-585200affbce" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/22693901-a518-4f10-989b-585200affbce.jpg.webp" /><noscript><img width="617" height="1280" decoding="async" class="swiper-slide-image" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/22693901-a518-4f10-989b-585200affbce.jpg.webp" alt="22693901-a518-4f10-989b-585200affbce" /></noscript></figure></div><div class="swiper-slide"><figure class="swiper-slide-inner"><img width="1125" height="2436" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201125%202436'%3E%3C/svg%3E" alt="IMG_9226" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/IMG_9226.png.webp" /><noscript><img width="1125" height="2436" decoding="async" class="swiper-slide-image" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/IMG_9226.png.webp" alt="IMG_9226" /></noscript></figure></div><div class="swiper-slide"><figure class="swiper-slide-inner"><img width="720" height="1280" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20720%201280'%3E%3C/svg%3E" alt="4" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4-1.jpg.webp" /><noscript><img width="720" height="1280" decoding="async" class="swiper-slide-image" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/4-1.jpg.webp" alt="4" /></noscript></figure></div><div class="swiper-slide"><figure class="swiper-slide-inner"><img width="800" height="382" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20382'%3E%3C/svg%3E" alt="5" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5-1.jpg.webp" /><noscript><img width="800" height="382" decoding="async" class="swiper-slide-image" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/5-1.jpg.webp" alt="5" /></noscript></figure></div><div class="swiper-slide"><figure class="swiper-slide-inner"><img width="828" height="934" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20828%20934'%3E%3C/svg%3E" alt="6" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6-1.jpg.webp" /><noscript><img width="828" height="934" decoding="async" class="swiper-slide-image" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/6-1.jpg.webp" alt="6" /></noscript></figure></div><div class="swiper-slide"><figure class="swiper-slide-inner"><img width="800" height="639" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20639'%3E%3C/svg%3E" alt="7" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7.jpg.webp" /><noscript><img width="800" height="639" decoding="async" class="swiper-slide-image" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7.jpg.webp" alt="7" /></noscript></figure></div><div class="swiper-slide"><figure class="swiper-slide-inner"><img width="720" height="1600" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20720%201600'%3E%3C/svg%3E" alt="PHOTO-2023-03-24-20-58-41" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/PHOTO-2023-03-24-20-58-41.jpg.webp" /><noscript><img width="720" height="1600" decoding="async" class="swiper-slide-image" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/PHOTO-2023-03-24-20-58-41.jpg.webp" alt="PHOTO-2023-03-24-20-58-41" /></noscript></figure></div><div class="swiper-slide"><figure class="swiper-slide-inner"><img width="720" height="1280" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20720%201280'%3E%3C/svg%3E" alt="1" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1-1.jpg.webp" /><noscript><img width="720" height="1280" decoding="async" class="swiper-slide-image" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/1-1.jpg.webp" alt="1" /></noscript></figure></div><div class="swiper-slide"><figure class="swiper-slide-inner"><img width="720" height="1280" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20720%201280'%3E%3C/svg%3E" alt="2" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2-1.jpg.webp" /><noscript><img width="720" height="1280" decoding="async" class="swiper-slide-image" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/2-1.jpg.webp" alt="2" /></noscript></figure></div><div class="swiper-slide"><figure class="swiper-slide-inner"><img width="828" height="910" decoding="async" class="swiper-slide-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20828%20910'%3E%3C/svg%3E" alt="3" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3-1.jpg.webp" /><noscript><img width="828" height="910" decoding="async" class="swiper-slide-image" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/3-1.jpg.webp" alt="3" /></noscript></figure></div>			</div>
+																<div class="elementor-swiper-button elementor-swiper-button-prev">
+						<i aria-hidden="true" class="eicon-chevron-left"></i>						<span class="elementor-screen-only">Previous</span>
+					</div>
+					<div class="elementor-swiper-button elementor-swiper-button-next">
+						<i aria-hidden="true" class="eicon-chevron-right"></i>						<span class="elementor-screen-only">Next</span>
+					</div>
+									</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-49f59c49 elementor-align-center elementor-widget elementor-widget-button" data-id="49f59c49" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a href="#compra" class="elementor-button-link elementor-button elementor-size-sm" role="button" id="bt_pulse">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">COMECE AGORA</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-74e5ae06 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="74e5ae06" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-38a25284" data-id="38a25284" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-2e6fbb4c elementor-invisible elementor-widget elementor-widget-image" data-id="2e6fbb4c" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;bounceIn&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="105" height="117" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20105%20117'%3E%3C/svg%3E" class="attachment-large size-large wp-image-57" alt="" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-12-1-1.png.webp" /><noscript><img decoding="async" width="105" height="117" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-12-1-1.png.webp" class="attachment-large size-large wp-image-57" alt="" /></noscript>															</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-7fe8cc19" data-id="7fe8cc19" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-5b3f9709 elementor-invisible elementor-widget elementor-widget-counter" data-id="5b3f9709" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="counter.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-counter">
+			<div class="elementor-counter-number-wrapper">
+				<span class="elementor-counter-number-prefix">+</span>
+				<span class="elementor-counter-number" data-duration="2000" data-to-value="307" data-from-value="0" data-delimiter=",">0</span>
+				<span class="elementor-counter-number-suffix"> MIL</span>
+			</div>
+							<div class="elementor-counter-title">ALUNOS!</div>
+					</div>
+				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-47afc16e" data-id="47afc16e" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-4164a070 elementor-hidden-tablet elementor-hidden-mobile elementor-invisible elementor-widget elementor-widget-image" data-id="4164a070" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;bounceIn&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="105" height="117" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20105%20117'%3E%3C/svg%3E" class="attachment-large size-large wp-image-57" alt="" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-12-1-1.png.webp" /><noscript><img decoding="async" width="105" height="117" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-12-1-1.png.webp" class="attachment-large size-large wp-image-57" alt="" /></noscript>															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-68289f4c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="68289f4c" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1beb2a18" data-id="1beb2a18" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-27cee6d6 elementor-invisible elementor-widget elementor-widget-image" data-id="27cee6d6" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="800" height="246" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20246'%3E%3C/svg%3E" class="attachment-large size-large wp-image-299" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/BONUS-1024x315.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/BONUS-300x92.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/BONUS-768x236.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/BONUS.png.webp 1090w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/BONUS-1024x315.png.webp" /><noscript><img decoding="async" width="800" height="246" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/BONUS-1024x315.png.webp" class="attachment-large size-large wp-image-299" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/BONUS-1024x315.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/BONUS-300x92.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/BONUS-768x236.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/BONUS.png.webp 1090w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-6f2f7187 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="6f2f7187" data-element_type="section" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-5aa6e270" data-id="5aa6e270" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-751e134d elementor-widget elementor-widget-heading" data-id="751e134d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default"><b><font color="dfad6b">TRÁFEGO PAGO - </font></b>COMPLETO</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-60a4e9f5 elementor-widget elementor-widget-heading" data-id="60a4e9f5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Especialista no mercado digital, iniciei como afiliado através de grupos pelo Facebook.</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-5f136a96 elementor-widget elementor-widget-heading" data-id="5f136a96" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Valor Imensurável</h2>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<div class="elementor-element elementor-element-387e1a63 elementor-widget elementor-widget-image" data-id="387e1a63" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="800" height="3" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%203'%3E%3C/svg%3E" class="attachment-large size-large wp-image-59" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-14-1-1.png.webp 1024w,   https://primeiravenda24hrss.com.br/wp-content/uploads/2023/01/asset-14-1-1-300x1.png 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-14-1-1-768x3.png.webp 768w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-14-1-1.png.webp" /><noscript><img decoding="async" width="800" height="3" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-14-1-1.png.webp" class="attachment-large size-large wp-image-59" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-14-1-1.png.webp 1024w,   https://primeiravenda24hrss.com.br/wp-content/uploads/2023/01/asset-14-1-1-300x1.png 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-14-1-1-768x3.png.webp 768w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-53cd0f81 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="53cd0f81" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-523cb9c7" data-id="523cb9c7" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-1873df9c elementor-widget elementor-widget-menu-anchor" data-id="1873df9c" data-element_type="widget" data-widget_type="menu-anchor.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.9.2 - 21-12-2022 */
+body.elementor-page .elementor-widget-menu-anchor{margin-bottom:0}</style>		<div id="compra" class="elementor-menu-anchor"></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-3e3125e9 elementor-widget elementor-widget-heading" data-id="3e3125e9" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">VAGAS LIMITADAS!
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-3a1924a9 elementor-widget elementor-widget-image" data-id="3a1924a9" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="800" height="341" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20341'%3E%3C/svg%3E" class="attachment-large size-large wp-image-300" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/LOGO-1-1024x436.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/LOGO-1-300x128.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/LOGO-1-768x327.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/LOGO-1.png.webp 1480w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/LOGO-1-1024x436.png.webp" /><noscript><img decoding="async" width="800" height="341" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/LOGO-1-1024x436.png.webp" class="attachment-large size-large wp-image-300" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/LOGO-1-1024x436.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/LOGO-1-300x128.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/LOGO-1-768x327.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/LOGO-1.png.webp 1480w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-33a38bdf elementor-widget elementor-widget-heading" data-id="33a38bdf" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">PRIMEIRA VENDA EM 24HRS (COMPLETO) + BÔNUS EXCLUSIVO</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-24fb41d5 elementor-widget elementor-widget-heading" data-id="24fb41d5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">NÃO, <b>NÃO SÃO 12 VEZES</b> DE R$19,90!
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-3401d94c elementor-widget elementor-widget-heading" data-id="3401d94c" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">R$ 19,90
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-5eed7a81 elementor-widget elementor-widget-heading" data-id="5eed7a81" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">OU 4X DE 5,34!</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-50081c8 elementor-widget elementor-widget-heading" data-id="50081c8" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Acompanhamento Pessoal Por 1 Ano
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-30c52e19 elementor-widget elementor-widget-heading" data-id="30c52e19" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Aulas Práticas, Assistiu Aplicou!
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-15f40c elementor-widget elementor-widget-heading" data-id="15f40c" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Grupo de Networking</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-56be01a6 elementor-widget elementor-widget-heading" data-id="56be01a6" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Bônus Incríveis</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-3c38826f elementor-widget elementor-widget-heading" data-id="3c38826f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Do Zero Ao Avançado</h2>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<div class="elementor-element elementor-element-3e53e6a2 elementor-align-center elementor-widget elementor-widget-button" data-id="3e53e6a2" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a href="https://pay.kiwify.com.br/XhmT4CD?afid=a5pVDQSq" class="elementor-button-link elementor-button elementor-size-sm elementor-animation-grow" role="button" id="bt_pulse">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">GARANTIR MINHA VAGA!</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-1c9f940e elementor-widget elementor-widget-image" data-id="1c9f940e" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="548" height="51" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20548%2051'%3E%3C/svg%3E" class="attachment-large size-large wp-image-61" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-16-1-1.png.webp 548w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-16-1-1-300x28.png.webp 300w" data-lazy-sizes="(max-width: 548px) 100vw, 548px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-16-1-1.png.webp" /><noscript><img decoding="async" width="548" height="51" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-16-1-1.png.webp" class="attachment-large size-large wp-image-61" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-16-1-1.png.webp 548w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/01/asset-16-1-1-300x28.png.webp 300w" sizes="(max-width: 548px) 100vw, 548px" /></noscript>															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-621ff1e7 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="621ff1e7" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-47a40036" data-id="47a40036" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<section class="elementor-section elementor-inner-section elementor-element elementor-element-3c2c4a1e elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="3c2c4a1e" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-6d332708" data-id="6d332708" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-9dda91b elementor-invisible elementor-widget elementor-widget-image" data-id="9dda91b" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;bounceIn&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="800" height="800" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%3E%3C/svg%3E" class="attachment-large size-large wp-image-301" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS-1024x1024.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS-300x300.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS-150x150.png.webp 150w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS-768x768.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS-1536x1536.png.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS.png.webp 1920w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS-1024x1024.png.webp" /><noscript><img decoding="async" width="800" height="800" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS-1024x1024.png.webp" class="attachment-large size-large wp-image-301" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS-1024x1024.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS-300x300.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS-150x150.png.webp 150w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS-768x768.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS-1536x1536.png.webp 1536w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/7-DIAS.png.webp 1920w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-29d05f76 elementor-invisible" data-id="29d05f76" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-16035d65 elementor-widget elementor-widget-heading" data-id="16035d65" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">ENTRE SEM RISCOS</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-6501f113 elementor-widget elementor-widget-heading" data-id="6501f113" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Fique tranquilo, seu investimento é totalmente seguro, possuímos uma garantia incondicional de 7 dias. Caso veja que o produto não atendeu às suas expectativas, você poderá solicitar a devolução de todo valor investido.
+</h2>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-12cef351 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="12cef351" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-748c0cbb" data-id="748c0cbb" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-46e47ff1 elementor-invisible elementor-widget elementor-widget-image" data-id="46e47ff1" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;bounceIn&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="512" height="512" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3C/svg%3E" class="attachment-large size-large wp-image-302" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/pergunta.png.webp 512w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/pergunta-300x300.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/pergunta-150x150.png.webp 150w" data-lazy-sizes="(max-width: 512px) 100vw, 512px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/pergunta.png.webp" /><noscript><img decoding="async" width="512" height="512" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/pergunta.png.webp" class="attachment-large size-large wp-image-302" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/pergunta.png.webp 512w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/pergunta-300x300.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/pergunta-150x150.png.webp 150w" sizes="(max-width: 512px) 100vw, 512px" /></noscript>															</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-719814cf elementor-invisible" data-id="719814cf" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeIn&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-6fba56fc elementor-widget elementor-widget-heading" data-id="6fba56fc" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">MELHOR SUPORTE DO MERCADO</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-40695241 elementor-widget elementor-widget-heading" data-id="40695241" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Além do acompanhamento pessoal, sempre que sentir qualquer dificuldade você terá acesso liberado para nos enviar uma mensagem. Temos uma equipe especializada e pronta para te atender pelo WhatsApp!
+</h2>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-1bd5008e elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="1bd5008e" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-12bcb869" data-id="12bcb869" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-475b19ae elementor-widget elementor-widget-heading" data-id="475b19ae" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">PERGUNTAS FREQUENTES</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-498b0b66 elementor-widget elementor-widget-toggle" data-id="498b0b66" data-element_type="widget" data-widget_type="toggle.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.9.2 - 21-12-2022 */
+.elementor-toggle{text-align:left}.elementor-toggle .elementor-tab-title{font-weight:700;line-height:1;margin:0;padding:15px;border-bottom:1px solid #d4d4d4;cursor:pointer;outline:none}.elementor-toggle .elementor-tab-title .elementor-toggle-icon{display:inline-block;width:1em}.elementor-toggle .elementor-tab-title .elementor-toggle-icon svg{-webkit-margin-start:-5px;margin-inline-start:-5px;width:1em;height:1em}.elementor-toggle .elementor-tab-title .elementor-toggle-icon.elementor-toggle-icon-right{float:right;text-align:right}.elementor-toggle .elementor-tab-title .elementor-toggle-icon.elementor-toggle-icon-left{float:left;text-align:left}.elementor-toggle .elementor-tab-title .elementor-toggle-icon .elementor-toggle-icon-closed{display:block}.elementor-toggle .elementor-tab-title .elementor-toggle-icon .elementor-toggle-icon-opened{display:none}.elementor-toggle .elementor-tab-title.elementor-active{border-bottom:none}.elementor-toggle .elementor-tab-title.elementor-active .elementor-toggle-icon-closed{display:none}.elementor-toggle .elementor-tab-title.elementor-active .elementor-toggle-icon-opened{display:block}.elementor-toggle .elementor-tab-content{padding:15px;border-bottom:1px solid #d4d4d4;display:none}@media (max-width:767px){.elementor-toggle .elementor-tab-title{padding:12px}.elementor-toggle .elementor-tab-content{padding:12px 10px}}.e-con-inner>.elementor-widget-toggle,.e-con>.elementor-widget-toggle{width:var(--container-widget-width);--flex-grow:var(--container-widget-flex-grow)}</style>		<div class="elementor-toggle" role="tablist">
+							<div class="elementor-toggle-item">
+					<div id="elementor-tab-title-1231" class="elementor-tab-title" data-tab="1" role="tab" aria-controls="elementor-tab-content-1231" aria-expanded="false">
+												<span class="elementor-toggle-icon elementor-toggle-icon-left" aria-hidden="true">
+															<span class="elementor-toggle-icon-closed"><i class="fas fa-caret-right"></i></span>
+								<span class="elementor-toggle-icon-opened"><i class="elementor-toggle-icon-opened fas fa-caret-up"></i></span>
+													</span>
+												<a href="" class="elementor-toggle-title">Quais são as formas de pagamento?</a>
+					</div>
+
+					<div id="elementor-tab-content-1231" class="elementor-tab-content elementor-clearfix" data-tab="1" role="tabpanel" aria-labelledby="elementor-tab-title-1231"><div class="elementor-toggle-item"><div id="elementor-tab-content-1951" class="elementor-tab-content elementor-clearfix elementor-active" role="tabpanel" data-tab="1" aria-labelledby="elementor-tab-title-1951"><p>Você poderá fazer o pagamento através do seu cartão de crédito, boleto ou pix.</p></div></div></div>
+				</div>
+							<div class="elementor-toggle-item">
+					<div id="elementor-tab-title-1232" class="elementor-tab-title" data-tab="2" role="tab" aria-controls="elementor-tab-content-1232" aria-expanded="false">
+												<span class="elementor-toggle-icon elementor-toggle-icon-left" aria-hidden="true">
+															<span class="elementor-toggle-icon-closed"><i class="fas fa-caret-right"></i></span>
+								<span class="elementor-toggle-icon-opened"><i class="elementor-toggle-icon-opened fas fa-caret-up"></i></span>
+													</span>
+												<a href="" class="elementor-toggle-title">Como terei acesso às aulas?</a>
+					</div>
+
+					<div id="elementor-tab-content-1232" class="elementor-tab-content elementor-clearfix" data-tab="2" role="tabpanel" aria-labelledby="elementor-tab-title-1232"><p>Após efetuado o pagamento, você receberá no e-mail cadastrado os dados de login para acessar a plataforma e começar a consumir o conteúdo.</p></div>
+				</div>
+							<div class="elementor-toggle-item">
+					<div id="elementor-tab-title-1233" class="elementor-tab-title" data-tab="3" role="tab" aria-controls="elementor-tab-content-1233" aria-expanded="false">
+												<span class="elementor-toggle-icon elementor-toggle-icon-left" aria-hidden="true">
+															<span class="elementor-toggle-icon-closed"><i class="fas fa-caret-right"></i></span>
+								<span class="elementor-toggle-icon-opened"><i class="elementor-toggle-icon-opened fas fa-caret-up"></i></span>
+													</span>
+												<a href="" class="elementor-toggle-title">Como posso tirar minhas dúvidas?</a>
+					</div>
+
+					<div id="elementor-tab-content-1233" class="elementor-tab-content elementor-clearfix" data-tab="3" role="tabpanel" aria-labelledby="elementor-tab-title-1233"><p>Você poderá esclarecer as suas dúvidas através do suporte em um grupo vip e um suporte exclusivo para meninas afiliadas, além das mentorias ao vivo que será um espaço aberto para troca de ideias.</p></div>
+				</div>
+								</div>
+				</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-58b12474 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="58b12474" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-579ac12a" data-id="579ac12a" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-1104009d elementor-widget elementor-widget-image" data-id="1104009d" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="800" height="323" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20323'%3E%3C/svg%3E" class="attachment-large size-large wp-image-275" alt="" data-lazy-srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-1024x414.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-300x121.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-768x311.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140.png.webp 1480w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-1024x414.png.webp" /><noscript><img decoding="async" width="800" height="323" src="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-1024x414.png.webp" class="attachment-large size-large wp-image-275" alt="" srcset="https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-1024x414.png.webp 1024w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-300x121.png.webp 300w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140-768x311.png.webp 768w,  https://primeiravenda24hrss.com.br/wp-content/webp-express/webp-images/uploads/2023/03/01-LOGO-e1679459183140.png.webp 1480w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-cbdeec4 elementor-widget elementor-widget-heading" data-id="cbdeec4" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">O Primeira Venda em 24hrs é uma empresa com o objetivo de ajudar pessoas a obterem resultados financeiros utilizando o poder da internet através de cursos digitais. Não reivindicamos ou declaramos que ao usar o método, você ganhará dinheiro ou recuperará seu dinheiro. Os depoimentos mostrados são negócios e vão variar com base no seu esforço, no conhecimento que você adquirir e nas forças do mercado que estão além do controle de qualquer pessoa.</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-39425af1 elementor-widget elementor-widget-heading" data-id="39425af1" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Esse produto é comercializado com apoio da Hotmart. A plataforma não faz controle editorial prévio dos produtos comercializados, nem avalia a tecnicidade e experiência daqueles que os produzem. A existência de um produto e sua aquisição, por meio da plataforma, não podem ser consideradas como garantia de qualidade de conteúdo e resultado, em qualquer hipótese. Ao adquiri-lo, o comprador declara estar ciente dessas informações. Os termos e políticas da Hotmart podem ser acessados aqui, antes mesmo da conclusão da compra.</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-32a9d10a elementor-widget elementor-widget-heading" data-id="32a9d10a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">COPYRIGHT © Primeira Venda em 24hrs 2022
+<br><br><b>MULTIUM CURSOS ONLINE LTDA - 43.695.282/0001-00</b><div class="_6g3g" style="align-self: auto; font-family: Roboto, Arial, sans-serif; color: rgb(28, 30, 33); font-size: 12px; text-align: start; white-space: normal; background-color: rgb(255, 255, 255); flex: 0 0 auto; order: 0;"><div style="font-family: inherit;"></div></div></h2>		</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-6b90bc48 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="6b90bc48" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-2bdd1ae7" data-id="2bdd1ae7" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-1ba43de0 elementor-widget elementor-widget-heading" data-id="1ba43de0" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Política de Privacidade</h2>		</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-29e5effd" data-id="29e5effd" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-314fa11c elementor-widget elementor-widget-heading" data-id="314fa11c" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Termos de Uso</h2>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+					</div>
+		</div>
+							</div>
+		</section>
+							</div>
+		<noscript><img height="1" width="1" style="display: none;" src="https://www.facebook.com/tr?id=758135006008887&ev=PageView&noscript=1&cd%5Bpage_title%5D=lp&cd%5Bpost_type%5D=page&cd%5Bpost_id%5D=34&cd%5Bplugin%5D=PixelYourSite&cd%5Buser_role%5D=guest&cd%5Bevent_url%5D=primeiravenda24hrss.com.br%2F" alt=""></noscript>
+<link rel='stylesheet' id='e-animations-css' href='https://primeiravenda24hrss.com.br/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=3.9.2' media='all' />
+<script type="rocketlazyloadscript" id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script id='rocket-preload-links-js-extra'>
+var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/primeiravenda24hrss.com.br","onHoverDelay":"100","rateThrottle":"3"};
+</script>
+<script type="rocketlazyloadscript" id='rocket-preload-links-js-after'>
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js?ver=1.0.0' id='hello-theme-frontend-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-content/plugins/elementor/assets/lib/jquery-numerator/jquery-numerator.min.js?ver=0.2.1' id='jquery-numerator-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-content/plugins/pro-elements/assets/js/webpack-pro.runtime.min.js?ver=3.8.0' id='elementor-pro-webpack-runtime-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.9.2' id='elementor-webpack-runtime-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.9.2' id='elementor-frontend-modules-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.13.9' id='regenerator-runtime-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0' id='wp-polyfill-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-includes/js/dist/hooks.min.js?ver=4169d3cf8e8d95a3d6d5' id='wp-hooks-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-includes/js/dist/i18n.min.js?ver=9e794f35a71bb98672ae' id='wp-i18n-js'></script>
+<script type="rocketlazyloadscript" id='wp-i18n-js-after'>
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script type="rocketlazyloadscript" id='elementor-pro-frontend-js-before'>
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/primeiravenda24hrss.com.br\/wp-admin\/admin-ajax.php","nonce":"f13edef2bc","urls":{"assets":"https:\/\/primeiravenda24hrss.com.br\/wp-content\/plugins\/pro-elements\/assets\/","rest":"https:\/\/primeiravenda24hrss.com.br\/wp-json\/"},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"facebook_sdk":{"lang":"en_US","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/primeiravenda24hrss.com.br\/wp-content\/plugins\/pro-elements\/modules\/lottie\/assets\/animations\/default.json"}};
+</script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-content/plugins/pro-elements/assets/js/frontend.min.js?ver=3.8.0' id='elementor-pro-frontend-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2' id='elementor-waypoints-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-includes/js/jquery/ui/core.min.js?ver=1.13.2' id='jquery-ui-core-js'></script>
+<script type="rocketlazyloadscript" id='elementor-frontend-js-before'>
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Extra","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Extra","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}},"version":"3.9.2","is_static":false,"experimentalFeatures":{"e_dom_optimization":true,"e_optimized_assets_loading":true,"e_optimized_css_loading":true,"a11y_improvements":true,"additional_custom_breakpoints":true,"e_import_export":true,"e_hidden_wordpress_widgets":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"landing-pages":true,"elements-color-picker":true,"favorite-widgets":true,"admin-top-bar":true,"kit-elements-defaults":true,"page-transitions":true,"notes":true,"loop":true,"form-submissions":true,"e_scroll_snap":true},"urls":{"assets":"https:\/\/primeiravenda24hrss.com.br\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"title","hello_footer_logo_type":"logo"},"post":{"id":34,"title":"Primeira%20venda%20em%2024%20horas","excerpt":"","featuredImage":false}};
+</script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.9.2' id='elementor-frontend-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-content/plugins/pro-elements/assets/js/elements-handlers.min.js?ver=3.8.0' id='pro-elements-handlers-js'></script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-includes/js/underscore.min.js?ver=1.13.4' id='underscore-js'></script>
+<script id='wp-util-js-extra'>
+var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
+</script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-includes/js/wp-util.min.js?ver=6.1.4' id='wp-util-js'></script>
+<script id='wpforms-elementor-js-extra'>
+var wpformsElementorVars = {"captcha_provider":"recaptcha","recaptcha_type":"v2"};
+</script>
+<script type="rocketlazyloadscript" src='https://primeiravenda24hrss.com.br/wp-content/plugins/wpforms-lite/assets/js/integrations/elementor/frontend.min.js?ver=1.7.8' id='wpforms-elementor-js'></script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://primeiravenda24hrss.com.br/wp-content/plugins/wp-rocket/assets/js/lazyload/17.5/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="play Youtube video"></button>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?'':'&'+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var e,t,p,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),a[t].appendChild(e),p=e.querySelector('.play'),p.onclick=lazyLoadYoutubeIframe});</script>	<script>class RocketElementorAnimation{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}_detectAnimations(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this._listAnimationSettingsKeys(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach(t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this._animateElement(t)}catch(t){}})}_animateElement(t){const e=JSON.parse(t.dataset.settings),i=e._animation_delay||e.animation_delay||0,n=e[this.animationSettingKeys.find(t=>e[t])];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let s=setTimeout(()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this._removeAnimationSettings(t,e)},i);window.addEventListener("rocket-startLoading",function(){clearTimeout(s)})}_listAnimationSettingsKeys(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach(t=>{e.forEach(e=>{i.push(t+e)})}),i}_removeAnimationSettings(t,e){this._listAnimationSettingsKeys().forEach(t=>delete e[t]),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorAnimation;requestAnimationFrame(t._detectAnimations.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorAnimation.run);</script></body>
+</html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1705676263 -->
